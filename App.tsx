@@ -52,7 +52,7 @@ const PledgeAgreementPage: React.FC<PledgeAgreementPageProps> = ({
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
       <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 p-8 lg:p-12">
-        
+
         {/* Header */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <CLSELogo className="h-12" />
@@ -165,7 +165,7 @@ const App: React.FC = () => {
 
   const handleAcceptAndGenerateCertificate = async () => {
     if (!formData) return;
-    
+
     setIsGenerating(true);
     setError('');
 
@@ -184,14 +184,14 @@ const App: React.FC = () => {
       }
 
       const result = await response.json();
-      
+
       setCertificateId(result.certificateId);
       setIsGenerating(false);
       setView('certificate');
-      
+
       // Refresh pledge count
       setPledgeCount(prev => prev + 1);
-      
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -215,7 +215,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white selection:bg-kgislPurple selection:text-white font-montserrat">
       <Header onHome={() => setView('landing')} />
-      
+
       <main className="flex-grow">
         {view === 'landing' && (
           <div className="animate-in fade-in duration-700">
@@ -232,21 +232,21 @@ const App: React.FC = () => {
                     CLSE Initiative
                   </div>
                   <h1 className="text-5xl lg:text-7xl font-black text-kgislPurple leading-[1.1] font-cinzel">
-                    Center for Life Skills & Education<br/>
+                    Center for Life Skills & Education<br />
                     <span className="text-kgislRed">Empowering Well-being, Resilience, and Success</span>
                   </h1>
                   <p className="text-xl text-gray-600 font-medium leading-relaxed max-w-2xl border-l-4 border-kgislPurple pl-6">
                     CLSE at KGiSL is dedicated to fostering holistic student development through mental health awareness, drug-free living, and essential life skills. Our programs, workshops, and pledge campaigns help build a supportive, healthy, and thriving campus community.
                   </p>
                   <div className="flex flex-wrap gap-6 pt-4">
-                    <button 
+                    <button
                       onClick={handleStartPledge}
                       className="bg-kgislPurple hover:bg-[#251a55] text-white font-black py-5 px-14 rounded-xl shadow-[0_20px_40px_-10px_rgba(51,36,112,0.4)] transition-all transform hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-widest flex items-center gap-4"
                     >
                       Take the Pledge
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </button>
-                    
+
                     <div className="flex items-center gap-4 px-8 py-4 bg-white border border-gray-100 rounded-xl shadow-sm">
                       <div className="w-12 h-12 rounded-full bg-kgislRed/10 flex items-center justify-center text-kgislRed">
                         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3.005 3.005 0 013.75-2.906z"></path></svg>
@@ -262,19 +262,19 @@ const App: React.FC = () => {
                   <div className="relative group">
                     <div className="absolute -inset-4 bg-gradient-to-tr from-kgislPurple to-kgislRed opacity-20 blur-2xl rounded-full group-hover:opacity-30 transition-opacity"></div>
                     <div className="relative bg-gradient-to-b from-white to-gray-50 p-6 rounded-[2.5rem] shadow-2xl border border-gray-100 transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                       <div className="flex flex-col gap-4 items-center justify-center">
-                         <div className="w-full flex justify-center">
-                           <CLSELogo className="h-32" />
-                         </div>
-                         <div className="w-full h-[1px] bg-gray-200"></div>
-                         <div className="w-full flex justify-center">
-                           <KGiSLLogo className="h-24" />
-                         </div>
-                       </div>
-                       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur px-8 py-4 rounded-2xl shadow-xl border border-gray-100 w-[80%] text-center">
-                          <p className="text-kgislPurple font-black uppercase text-xs tracking-widest">Center for Life Skills Education</p>
-                          <p className="text-kgislRed font-bold text-[10px] uppercase mt-1 tracking-tighter">Mental Health & Drug-Free Initiative</p>
-                       </div>
+                      <div className="flex flex-col gap-4 items-center justify-center">
+                        <div className="w-full flex justify-center">
+                          <CLSELogo className="h-32" />
+                        </div>
+                        <div className="w-full h-[1px] bg-gray-200"></div>
+                        <div className="w-full flex justify-center">
+                          <KGiSLLogo className="h-24" />
+                        </div>
+                      </div>
+                      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur px-8 py-4 rounded-2xl shadow-xl border border-gray-100 w-[80%] text-center">
+                        <p className="text-kgislPurple font-black uppercase text-xs tracking-widest">Center for Life Skills Education</p>
+                        <p className="text-kgislRed font-bold text-[10px] uppercase mt-1 tracking-tighter">Mental Health & Drug-Free Initiative</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -291,7 +291,7 @@ const App: React.FC = () => {
                 <div className="grid md:grid-cols-3 gap-12 relative">
                   {/* Connectors */}
                   <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-100 -translate-y-1/2 z-0"></div>
-                  
+
                   {[
                     { step: '01', title: 'Start Pledge', desc: 'Click on the "Take the Pledge" button to begin your journey.' },
                     { step: '02', title: 'Enter Details', desc: 'Provide your official institutional details for record verification.' },
@@ -331,21 +331,21 @@ const App: React.FC = () => {
 
         {view === 'form' && (
           <div className="max-w-4xl mx-auto px-6 py-16 animate-in slide-in-from-bottom-10 duration-700">
-             <div className="mb-10 text-center">
-                <button 
-                  onClick={() => setView('landing')}
-                  className="inline-flex items-center gap-2 text-gray-400 hover:text-kgislPurple font-bold uppercase text-[10px] tracking-widest transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7"></path></svg>
-                  Back to Portal
-                </button>
-             </div>
+            <div className="mb-10 text-center">
+              <button
+                onClick={() => setView('landing')}
+                className="inline-flex items-center gap-2 text-gray-400 hover:text-kgislPurple font-bold uppercase text-[10px] tracking-widest transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                Back to Portal
+              </button>
+            </div>
 
-             {error && (
-               <div className="mb-6 p-4 bg-kgislRed/10 border border-kgislRed/30 rounded-lg">
-                 <p className="text-kgislRed font-bold text-sm">{error}</p>
-               </div>
-             )}
+            {error && (
+              <div className="mb-6 p-4 bg-kgislRed/10 border border-kgislRed/30 rounded-lg">
+                <p className="text-kgislRed font-bold text-sm">{error}</p>
+              </div>
+            )}
 
             {isGenerating ? (
               <div className="flex flex-col items-center justify-center py-32 space-y-8">
@@ -381,7 +381,7 @@ const App: React.FC = () => {
         )}
 
         {view === 'pledge-agreement' && formData && (
-          <PledgeAgreementPage 
+          <PledgeAgreementPage
             studentName={formData.fullName}
             onAccept={handleAcceptAndGenerateCertificate}
             isLoading={isGenerating}
@@ -393,43 +393,70 @@ const App: React.FC = () => {
         )}
 
         {view === 'certificate' && formData && (
-          <div className="max-w-6xl mx-auto px-6 py-16 animate-in zoom-in-95 duration-700">
-            <div className="grid lg:grid-cols-12 gap-12 items-start">
-              <div className="lg:col-span-8 space-y-8">
-                <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 ring-1 ring-black/5">
-                  <Certificate data={formData} ref={certificateRef} />
+          <>
+            <div className="max-w-6xl mx-auto px-6 py-16 animate-in zoom-in-95 duration-700">
+              <div className="grid lg:grid-cols-12 gap-12 items-start">
+                <div className="lg:col-span-8 space-y-8">
+                  <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-gray-100 ring-1 ring-black/5">
+                    <Certificate data={formData} ref={certificateRef} />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="lg:col-span-4 space-y-6 sticky top-28">
-                <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100">
-                  <div className="flex items-center gap-8 mt-10">
+
+                <div className="lg:col-span-4 space-y-6 sticky top-28">
+                  <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100">
+                    <div className="flex items-center gap-8 mt-10">
+                      <button
+                        onClick={handleStartPledge}
+                        className="bg-kgislPurple text-white font-black py-5 px-10 rounded-2xl shadow-xl hover:bg-kgislPurple/95 transition-all transform hover:-translate-y-2 active:scale-[0.97] text-lg uppercase tracking-widest flex items-center gap-4"
+                      >
+                        Take the Pledge
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                      </button>
+                      <div className="flex flex-col items-center">
+                        <span className="text-5xl font-black text-kgislRed">{pledgeCount.toLocaleString()}</span>
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Pledges & Counting</span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* CLSE Logo and Visual */}
+                  <div className="lg:col-span-5 flex flex-col items-center justify-center">
+                    <CLSELogo className="h-24 mb-6" />
+                    <KGiSLLogo className="h-16" />
+                    <div className="mt-6 text-center text-gray-400 text-sm max-w-xs">
+                      Supported by KGiSL Institutions
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
                     <button
-                      onClick={handleStartPledge}
-                      className="bg-kgislPurple text-white font-black py-5 px-10 rounded-2xl shadow-xl hover:bg-kgislPurple/95 transition-all transform hover:-translate-y-2 active:scale-[0.97] text-lg uppercase tracking-widest flex items-center gap-4"
+                      onClick={downloadCertificate}
+                      className="w-full bg-kgislRed hover:bg-red-700 text-white font-black py-5 px-6 rounded-2xl shadow-xl transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 uppercase text-xs tracking-widest"
                     >
-                      Take the Pledge
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                      Download e-Certificate
                     </button>
-                    <div className="flex flex-col items-center">
-                      <span className="text-5xl font-black text-kgislRed">{pledgeCount.toLocaleString()}</span>
-                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Pledges & Counting</span>
+
+                    <button
+                      onClick={() => setView('form')}
+                      className="w-full bg-white border-2 border-gray-100 text-gray-400 hover:text-kgislPurple hover:border-kgislPurple font-black py-5 px-6 rounded-2xl transition-all uppercase text-xs tracking-widest"
+                    >
+                      Change Details
+                    </button>
+                  </div>
+
+                  <div className="p-8 text-center bg-slate-50 rounded-[2rem] border border-gray-100 border-dashed">
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Share your commitment</p>
+                    <div className="flex justify-center gap-4 mt-4">
+                      {['X', 'IN', 'FB'].map(sm => (
+                        <div key={sm} className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[10px] font-black text-kgislPurple hover:bg-kgislPurple hover:text-white transition-colors cursor-pointer">{sm}</div>
+                      ))}
                     </div>
                   </div>
                 </div>
-                {/* CLSE Logo and Visual */}
-                <div className="lg:col-span-5 flex flex-col items-center justify-center">
-                  <CLSELogo className="h-24 mb-6" />
-                  <KGiSLLogo className="h-16" />
-                  <div className="mt-6 text-center text-gray-400 text-sm max-w-xs">
-                    Supported by KGiSL Institutions
-                  </div>
-                </div>
               </div>
-            </section>
-          </div>
-          {/* About CLSE Section */}
-          <section className="max-w-5xl mx-auto px-6 py-16">
+            </div>
+            {/* About CLSE Section */}
+            <section className="max-w-5xl mx-auto px-6 py-16">
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-10">
                 <h2 className="text-3xl font-black text-kgislPurple mb-4">About CLSE</h2>
                 <p className="text-lg text-gray-700 mb-6">
@@ -451,36 +478,7 @@ const App: React.FC = () => {
                 </div>
               </div>
             </section>
-
-                  <div className="space-y-4">
-                    <button 
-                      onClick={downloadCertificate}
-                      className="w-full bg-kgislRed hover:bg-red-700 text-white font-black py-5 px-6 rounded-2xl shadow-xl transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 uppercase text-xs tracking-widest"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                      Download e-Certificate
-                    </button>
-                    
-                    <button 
-                      onClick={() => setView('form')}
-                      className="w-full bg-white border-2 border-gray-100 text-gray-400 hover:text-kgislPurple hover:border-kgislPurple font-black py-5 px-6 rounded-2xl transition-all uppercase text-xs tracking-widest"
-                    >
-                      Change Details
-                    </button>
-                  </div>
-                </div>
-
-                <div className="p-8 text-center bg-slate-50 rounded-[2rem] border border-gray-100 border-dashed">
-                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Share your commitment</p>
-                  <div className="flex justify-center gap-4 mt-4">
-                    {['X', 'IN', 'FB'].map(sm => (
-                      <div key={sm} className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[10px] font-black text-kgislPurple hover:bg-kgislPurple hover:text-white transition-colors cursor-pointer">{sm}</div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </>
         )}
       </main>
 
@@ -492,15 +490,15 @@ const App: React.FC = () => {
                 <span className="text-4xl font-black text-white tracking-tighter">KGiSL</span>
                 <div className="w-[2px] h-10 bg-white/10"></div>
                 <div className="text-left">
-                    <p className="text-[11px] font-black text-white uppercase tracking-widest leading-none">Center for Life Skills</p>
-                    <p className="text-[11px] font-black text-kgislRed uppercase tracking-widest leading-none mt-1">Education (CLSE)</p>
+                  <p className="text-[11px] font-black text-white uppercase tracking-widest leading-none">Center for Life Skills</p>
+                  <p className="text-[11px] font-black text-kgislRed uppercase tracking-widest leading-none mt-1">Education (CLSE)</p>
                 </div>
               </div>
               <p className="text-sm font-medium leading-relaxed max-w-md">
                 Dedicated to the holistic development of students through emotional intelligence, mental resilience, and life skill proficiencies.
-                  </p>
+              </p>
             </div>
-            
+
             <div className="space-y-6">
               <h5 className="text-white font-black uppercase text-xs tracking-widest">Quick Links</h5>
               <ul className="space-y-3 text-xs font-bold uppercase tracking-widest">
@@ -519,15 +517,15 @@ const App: React.FC = () => {
               </ul>
             </div>
           </div>
-          
+
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[10px] font-bold uppercase tracking-widest">
               © {new Date().getFullYear()} KGiSL Educational Institutions • Official Digital Portal
             </p>
             <div className="flex items-center gap-6">
-               <CLSELogo className="h-8" />
-               <KGiSLLogo className="h-8" />
-               <span className="text-[9px] font-black uppercase tracking-tighter">Powered by KGiSL-KiTE IT Services</span>
+              <CLSELogo className="h-8" />
+              <KGiSLLogo className="h-8" />
+              <span className="text-[9px] font-black uppercase tracking-tighter">Powered by KGiSL-KiTE IT Services</span>
             </div>
           </div>
         </div>

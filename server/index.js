@@ -28,6 +28,15 @@ mongoose.connect(MONGODB_URI)
 
 // Routes
 
+// Root handler
+app.get('/', (req, res) => {
+  res.json({
+    message: 'KGiSL Mental Health Pledge API',
+    status: 'Running',
+    documentation: '/api/health'
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running', timestamp: new Date().toISOString() });
@@ -167,7 +176,7 @@ app.get('/api/pledges/:certificateId', async (req, res) => {
 app.get('/api/pledges', async (req, res) => {
   try {
     const { college, department, limit = 100, skip = 0 } = req.query;
-    
+
     const filter = {};
     if (college) filter.college = college;
     if (department) filter.department = department;
