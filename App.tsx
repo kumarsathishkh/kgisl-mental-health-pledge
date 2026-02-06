@@ -1,10 +1,11 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { PledgeFormData } from './types';
 import PledgeForm from './components/PledgeForm';
 import Certificate from './components/Certificate';
 import Header from './components/Header';
 import { CLSELogo, KGiSLLogo } from './components/Logos';
+import { AboutCLSE } from './components/AboutCLSE';
+import { Contact } from './components/Contact';
 import html2canvas from 'html2canvas';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -115,7 +116,7 @@ const PledgeAgreementPage: React.FC<PledgeAgreementPageProps> = ({
 };
 
 const App: React.FC = () => {
-  const [view, setView] = useState<'landing' | 'form' | 'pledge-agreement' | 'certificate'>('landing');
+  const [view, setView] = useState<'landing' | 'form' | 'pledge-agreement' | 'certificate' | 'about' | 'contact'>('landing');
   const [formData, setFormData] = useState<PledgeFormData | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [pledgeCount, setPledgeCount] = useState(0);
@@ -214,9 +215,16 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white selection:bg-kgislPurple selection:text-white font-montserrat">
-      <Header onHome={() => setView('landing')} />
+      <Header
+        onHome={() => setView('landing')}
+        onAbout={() => setView('about')}
+        onContact={() => setView('contact')}
+      />
 
       <main className="flex-grow">
+        {view === 'about' && <AboutCLSE />}
+        {view === 'contact' && <Contact />}
+
         {view === 'landing' && (
           <div className="animate-in fade-in duration-700">
             {/* CLSE Hero Section */}
@@ -455,7 +463,11 @@ const App: React.FC = () => {
                 </div>
               </div>
             </div>
-            {/* About CLSE Section */}
+            {/* About CLSE Section - only show on landing or about? Actually in previous design it effectively appeared inside certificate view? 
+               Wait, looking at previous code, About CLSE section was at the bottom of certificate view? 
+               In Step 141, line 459, there was an 'About CLSE Section' rendered when view === 'certificate'.
+               I will keep it there for consistency, although now we have a dedicated page too.
+            */}
             <section className="max-w-5xl mx-auto px-6 py-16">
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-10">
                 <h2 className="text-3xl font-black text-kgislPurple mb-4">About CLSE</h2>
@@ -502,18 +514,20 @@ const App: React.FC = () => {
             <div className="space-y-6">
               <h5 className="text-white font-black uppercase text-xs tracking-widest">Quick Links</h5>
               <ul className="space-y-3 text-xs font-bold uppercase tracking-widest">
-                {['Home', 'About Initiative', 'Verification', 'Institutions'].map(l => (
-                  <li key={l}><a href="#" className="hover:text-kgislRed transition-colors">{l}</a></li>
-                ))}
+                <li><button onClick={() => setView('landing')} className="hover:text-kgislRed transition-colors text-left">Home</button></li>
+                <li><button onClick={() => setView('about')} className="hover:text-kgislRed transition-colors text-left">About Initiative</button></li>
+                <li><button onClick={() => setView('form')} className="hover:text-kgislRed transition-colors text-left">Verification</button></li>
+                <li><a href="#" className="hover:text-kgislRed transition-colors">Institutions</a></li>
               </ul>
             </div>
 
             <div className="space-y-6">
               <h5 className="text-white font-black uppercase text-xs tracking-widest">Support</h5>
               <ul className="space-y-3 text-xs font-bold uppercase tracking-widest">
-                {['Contact Us', 'Privacy Policy', 'Terms of Use', 'Accessibility'].map(l => (
-                  <li key={l}><a href="#" className="hover:text-kgislRed transition-colors">{l}</a></li>
-                ))}
+                <li><button onClick={() => setView('contact')} className="hover:text-kgislRed transition-colors text-left">Contact Us</button></li>
+                <li><a href="#" className="hover:text-kgislRed transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-kgislRed transition-colors">Terms of Use</a></li>
+                <li><a href="#" className="hover:text-kgislRed transition-colors">Accessibility</a></li>
               </ul>
             </div>
           </div>

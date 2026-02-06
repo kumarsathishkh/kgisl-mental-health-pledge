@@ -1,6 +1,6 @@
 import React from 'react';
 
-// CLSE Logo - Real Image Version (Inverted to fix black background)
+// CLSE Logo - Real Image Version
 export const CLSELogo: React.FC<{ className?: string, bgWhite?: boolean }> = ({ className = "h-14", bgWhite = false }) => {
   const [imageError, setImageError] = React.useState(false);
 
@@ -13,7 +13,7 @@ export const CLSELogo: React.FC<{ className?: string, bgWhite?: boolean }> = ({ 
       <img
         src="/images/clse-logo.png?v=1"
         alt="CLSE - Center for Life Skills Education"
-        className={`${className} object-contain mix-blend-multiply filter invert`}
+        className={`${className} object-contain mix-blend-multiply`}
         onError={() => setImageError(true)}
       />
     </div>
